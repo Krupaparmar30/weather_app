@@ -13,9 +13,6 @@ class favPage extends StatelessWidget {
     WeatherProvider weatherProviderFalse = Provider.of(context, listen: false);
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Favre'),
-      ),
       body: FutureBuilder(
         future: Provider.of<WeatherProvider>(context, listen: false)
             .fromMap(weatherProviderTrue.searchWeather),
@@ -25,58 +22,76 @@ class favPage extends StatelessWidget {
             WeatherModal? tmp = snapshot.data;
             return SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Column(
-                children: [
-                  ...List.generate(
-                    weatherProviderTrue.weather.length,
-                    (index) => Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Container(
-                            height: 120,
-                            width: 380,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.white,
-                            ),
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                          'city : ${weatherProviderTrue.weather[index]}'),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                          'temprecher: ${weatherProviderTrue.temprecher[index]}'),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(8.0),
-                                      child: Text(
-                                          '${weatherProviderTrue.stu[index]}'),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
+              child: Container(
+                height: 800,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage('assets/images/fav.gif'))),
+                child: Column(
+                  children: [
+                    ...List.generate(
+                      weatherProviderTrue.weather.length,
+                      (index) => Column(
+                        children: [
+                          SizedBox(
+                            height: 20,
                           ),
-                        )
-                      ],
-                    ),
-                  )
-                ],
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Container(
+                              height: 140,
+                              width: 380,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Colors.white60,
+                              ),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                          'City : ${weatherProviderTrue.weather[index]}',
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 18),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                            'temprecher: ${weatherProviderTrue.temprecher[index]}',     style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text(
+                                            '${weatherProviderTrue.stu[index]}',     style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 18),),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    )
+                  ],
+                ),
               ),
             );
           } else if (snapshot.hasError) {
@@ -88,67 +103,6 @@ class favPage extends StatelessWidget {
           }
         },
       ),
-      // SingleChildScrollView(
-      //   scrollDirection: Axis.vertical,
-      //   child: Column(
-      //     children: [
-      //       ...List.generate(
-      //         weatherProviderTrue.weather.length,
-      //         (index) => Column(
-      //           children: [
-      //             Padding(
-      //               padding: const EdgeInsets.all(8.0),
-      //               child: Container(
-      //                 height: 120,
-      //                 width: 380,
-      //                 decoration: BoxDecoration(
-      //                   borderRadius: BorderRadius.circular(10),
-      //                   color: Colors.white,
-      //                 ),
-      //                 child: Column(
-      //                   children: [
-      //                     Row(
-      //                       children: [
-      //                         Padding(
-      //                           padding: const EdgeInsets.all(8.0),
-      //                           child: Text('city : ${weatherProviderTrue.weather[index]}'),
-      //                         ),
-      //
-      //
-      //                       ],
-      //                     ),
-      //                     Row(
-      //                       children: [
-      //
-      //
-      //                         Padding(
-      //                           padding: const EdgeInsets.all(8.0),
-      //                           child:    Text('temprecher: ${weatherProviderTrue.temprecher[index]}'),
-      //                         ),
-      //                       ],
-      //                     ),
-      //                     Row(
-      //                       children: [
-      //
-      //
-      //                         Padding(
-      //                           padding: const EdgeInsets.all(8.0),
-      //                           child:                              Text('${weatherProviderTrue.stu[index]}'),
-      //
-      //                         ),
-      //                       ],
-      //                     ),
-      //
-      //                   ],
-      //                 ),
-      //               ),
-      //             )
-      //           ],
-      //         ),
-      //       )
-      //     ],
-      //   ),
-      // ),
     );
   }
 }

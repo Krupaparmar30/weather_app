@@ -20,6 +20,7 @@ class Location {
       required this.country,
       required this.tz_id,
       required this.localtime,
+
      });
 
   factory Location.fromJson(Map m1) {
